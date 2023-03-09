@@ -1,2 +1,2 @@
 #!/bin/bash
-# get the user's home directory path from /etc/passwd home_dir=$(awk -F: '$1 == ENVIRON["USER"] {print $6}' /etc/passwd) # change the working directory to the home directory cd "$home_dir"
+cd ~
