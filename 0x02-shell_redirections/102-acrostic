@@ -1,16 +1,2 @@
 #!/bin/bash
-import sys
-
-def decode_acrostic(file):
-    with open(file, 'r') as f:
-        lines = f.readlines()
-        decoded_message = ''.join([line[0] for line in lines])
-        print(decoded_message)
-        print() # add a new line at the end of the output
-
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print('Usage: python decode_acrostic.py filename')
-    else:
-        decode_acrostic(sys.argv[1])
-
+cut -c 1 | paste -s -d ''
