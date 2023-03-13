@@ -1,3 +1,2 @@
 #!/bash/bin
-
-
+sort | uniq -u
