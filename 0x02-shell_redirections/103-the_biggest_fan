@@ -1,27 +1,2 @@
 #!/bin/bash
-import sys
-
-def parse_log(file):
-    requests_by_host = {}
-    with open(file, 'r') as f:
-        for line in f:
-            fields = line.split('\t')
-            host = fields[0]
-            logname = fields[1]
-            time = fields[2]
-            method = fields[3]
-            url = fields[4]
-            response = fields[5]
-            bytes = fields[6]
-            requests_by_host[host] = requests_by_host.get(host, 0) + 1
-    sorted_hosts = sorted(requests_by_host.items(), key=lambda x: x[1], reverse=True)
-    print("host\t\ttime\t\tmethod\turl\t\t\t\tresponse\tbytes")
-    for host, count in sorted_hosts[:11]:
-        print(f"{host}\t{time}\t{method}\t{url}\t{response}\t\t{bytes}")
-
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print('Usage: python parse_log.py filename')
-    else:
-        parse_log(sys.argv[1])
-
+tail -n +2 | cut -f -1 | sort -k 1 | uniq -c | sort -rnk 1 | head -n 11 | rev | cut -d ' ' -f -1 | rev
