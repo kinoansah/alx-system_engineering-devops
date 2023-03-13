@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod +x create_file.sh
+echo  "Best School" > \\\*\\\\"'\"Best School\"\\'\\\\\\*\\$\\\?\*\\\*\\\*\\\*\\\\*\:\)
