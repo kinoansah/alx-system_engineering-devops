@@ -1,0 +1,17 @@
+#!/bin/bash
+import os
+
+def list_gif_files(path):
+    gif_files = []
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if file.lower().endswith('.gif') and os.path.isfile(os.path.join(root, file)):
+                gif_files.append(file[:-4]) # remove the .gif extension from the filename
+    gif_files.sort(key=str.lower) # sort the filenames in a case-insensitive manner
+    for file in gif_files:
+        print(file)
+    print() # add a new line at the end of the output
+
+if __name__ == '__main__':
+    list_gif_files('.')
+
