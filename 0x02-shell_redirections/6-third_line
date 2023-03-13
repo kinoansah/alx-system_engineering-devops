@@ -1,0 +1,3 @@
+#!/bin/bash
+chmod +x display_third_line.sh
+
