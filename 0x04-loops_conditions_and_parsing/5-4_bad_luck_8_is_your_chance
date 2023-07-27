@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script is displaying "bad luck" for the 4th loop, "good luck" for the 8th loop and "Best School" for the remaining loops up to 10
+
+# Set the counter to 1
+counter=1
+
+# Start the while loop
+while [ $counter -le 10 ]
+do
+  if [ $counter -eq 4 ]; then
+    echo "bad luck"
+  elif [ $counter -eq 8 ]; then
+    echo "good luck"
+  else
+    echo "Best School"
+  fi
+
+  # Increment the counter
+  ((counter++))
+done
