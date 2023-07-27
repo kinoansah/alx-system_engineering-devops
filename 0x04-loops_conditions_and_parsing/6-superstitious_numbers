@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# This script prints some superstitious numbers
+
+# Set the counter to 1
+counter=1
+
+# Start the while loop
+while [ $counter -le 20 ]
+do
+  case $counter in
+    4)
+      echo "$counter"
+      echo "bad luck from China"
+      ;;
+    9)
+      echo "$counter"
+      echo "bad luck from Japan"
+      ;;
+    17)
+      echo "$counter"
+      echo "bad luck from Italy"
+      ;;
+    *)
+      echo "$counter"
+      ;;
+  esac
+
+  # Increment the counter
+  ((counter++))
+done
