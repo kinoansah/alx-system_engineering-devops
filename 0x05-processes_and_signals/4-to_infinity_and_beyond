@@ -1,19 +1,7 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times but the 9th iteration has a Hi
+# This script displays "To infinity and beyond" indefinitely
 
-# Set the counter to 1
-counter=1
-
-# Start the while loop
-while [ $counter -le 10 ]
-do
-  if [ $counter -eq 9 ]; then
-    echo "Best School"
-    echo "Hi"
-  else
-    echo "Best School"
-  fi
-
-  # Increment the counter
-  ((counter++))
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
 done
