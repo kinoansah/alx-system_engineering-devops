@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script stops 4-to_infinity_and_beyond process.
+
+# Start the 4-to_infinity_and_beyond script in the background
+./4-to_infinity_and_beyond &
+
+# Get the PID of the 4-to_infinity_and_beyond script
+PID=$!
+
+# Wait for a while to see the message from the 4-to_infinity_and_beyond script
+sleep 15
+
+# Send SIGUSR1 signal to stop the 4-to_infinity_and_beyond process
+kill -SIGUSR1 $PID
+
