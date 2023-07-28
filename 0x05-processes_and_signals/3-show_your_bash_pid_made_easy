@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times
+# This script displays the PID, along with the process name, of processes whose name contain the word "bash".
 
-# Set the counter to 1
-counter=1
+# Get the list of all processes containing the word "bash" in their command line
+processes=$(pgrep -af "bash")
 
-# Start the until loop
-until [ $counter -gt 10 ]
-do
-  echo "Best School"
-  # Increment the counter
-  ((counter++))
+# Loop through the list of processes
+for process in $processes; do
+	# Extract the PID and process name from the output
+	pid=$(echo "$process" | awk '{print $1}')
+	name=$(echo "$process" | awk '{$1=""; print}')
+
+	# Display the PID and the process name
+	echo "$pid $name"
 done
