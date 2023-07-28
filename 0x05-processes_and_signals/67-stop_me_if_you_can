@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Start the 7-highlander script in the background
+./7-highlander &
+
+# Get the PID of the 7-highlander script
+PID=$!
+
+# Function to stop the 7-highlander process using SIGTERM
+stop_highlander() {
+    kill -SIGTERM $PID
+}
+
+# Trap the SIGINT signal (Ctrl+C) and call the stop_highlander function
+trap stop_highlander SIGINT
+
+# Wait for the 7-highlander script to finish
+wait $PID
+
