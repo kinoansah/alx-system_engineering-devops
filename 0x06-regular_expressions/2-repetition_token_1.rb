@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# A regular expression that matches a given pattern
 
 # Check if an argument is provided
 if ARGV.empty?
