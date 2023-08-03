@@ -1,20 +1,3 @@
 #!/usr/bin/env ruby
-
-# Check if an argument is provided
-if ARGV.empty?
-  puts "Usage: #{$PROGRAM_NAME} <input_string>"
-  exit(1)
-end
-
-# Extract the input string from the command-line argument
-input_string = ARGV[0]
-
-# Define the regular expression pattern for matching capital letters
-pattern = /[A-Z]/
-
-# Match the pattern in the input string and join the results
-match_result = input_string.scan(pattern).join
-
-# Output the matched result or an empty string if no match found
-puts match_result
-
+# A regular expression that is matches only capital letters
+puts ARGV[0].scan(/[A-Z]/).join
