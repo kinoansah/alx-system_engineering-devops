@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 # This script pings an IP address passed as an argument.
 
-if [[ $# -eq 0 ]]; then
-	echo "Usage: $0 {IP_ADDRESS}"
-	exit 1
+if
+	[ -z "$1" ]; then
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+else
+	ping -c5 "$1"
 fi
-
-ip_address=$1
-
-# Function to ping the IP 5 times
-ping_ip() {
-	echo "PING $ip_address($ip_address) 56(84) bytes of data."
-	ping -c 5 "$ip_address"
-}
-
-ping_ip
