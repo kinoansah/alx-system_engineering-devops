@@ -1,29 +1,4 @@
 #!/usr/bin/env bash
 # This script displays listening ports
 
-echo "Active Internet connections (only servers)"
-echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
-
-# Display TCP listening ports
-ss -tln | awk '$1 == "LISTEN" {print $1, $4, $NF}' | while IFS= read -r proto local foreign program; do
-    pid=$(echo "$program" | awk -F'/' '{print $1}')
-    pname=$(echo "$program" | awk -F'/' '{print $2}')
-    echo "$proto        0      0 $local           $foreign                 LISTEN      $pid/$pname"
-done
-
-# Display UDP listening ports
-ss -uln | awk '$1 == "UNCONN" {print $1, $4, $NF}' | while IFS= read -r proto local foreign program; do
-    pid=$(echo "$program" | awk -F'/' '{print $1}')
-    pname=$(echo "$program" | awk -F'/' '{print $2}')
-    echo "$proto        0      0 $local           $foreign                             $pid/$pname"
-done
-
-echo "Active UNIX domain sockets (only servers)"
-echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
-
-# Display Unix domain sockets
-ss -lx | awk '$1 == "LISTEN" {print $1, $5, $6}' | while IFS= read -r proto inode program; do
-    pid=$(echo "$program" | awk -F'/' '{print $1}')
-    pname=$(echo "$program" | awk -F'/' '{print $2}')
-    echo "unix  2      [ ACC ]     $proto     LISTENING     $inode     $pid/$pname         $program"
-done
+netstat -lp
