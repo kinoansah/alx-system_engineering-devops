@@ -26,8 +26,8 @@ frontend http-in
 
 backend web-servers
     balance roundrobin
-    server web-01 [STUDENT_ID]-web-01:80 check
-    server web-02 [STUDENT_ID]-web-02:80 check
+    server web-01 kinoansah-web-01:80 check
+    server web-02 kinoansah-web-02:80 check
 EOL
 
 # Restart HAProxy
