@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
-# Define a class to configure the custom HTTP header
-class custom_http_response_header {
-  file { '/etc/nginx/conf.d/custom_response_header.conf':
-    ensure  => 'file',
-    content => "add_header X-Served-By $hostname;\n",
-    notify  => Service['nginx'],
-  }
+# puppet advance
+exec { 'update':
+  command  => 'sudo apt-get update',
+  provider => shell,
 }
-
-# Include the Nginx class to ensure Nginx is installed and running
-include nginx
-
-# Include the custom_http_response_header class to configure the custom header
-include custom_http_response_header
+-> package {'nginx':
+  ensure => present,
+}
+-> file_line { 'header line':
+  ensure => present,
+  path   => '/etc/nginx/sites-available/default',
+  line   => "	location / {
+  add_header X-Served-By ${hostname};",
+  match  => '^\tlocation / {',
+}
+-> exec { 'restart service':
+  command  => 'sudo service nginx restart',
+  provider => shell,
+}
