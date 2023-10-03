@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#New server configuration
+# New server configuration
 
 apt-get update
 apt-get install -y nginx
