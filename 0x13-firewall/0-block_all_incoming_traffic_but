@@ -1,13 +1,13 @@
-sudo apt update
-sudo apt install ufw
+# update the system and install ufw
+sudo apt update -y
+sudo apt install ufw -y
+sudo ufw default deny incoming -y # block all incoming signals
+sudo ufw default allow outgoing -y # allow all outgoing signals
 
-# Block all incoming traffic
-sudo ufw default deny incoming
+# allow ports 22, 443, and 80
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
 
-# Allow incoming traffic on ports 22, 443, and 80
-sudo ufw allow tcp 22
-sudo ufw allow tcp 443
-sudo ufw allow tcp 80
-
-# Enable ufw
 sudo ufw enable
+sudo ufw status numbered
